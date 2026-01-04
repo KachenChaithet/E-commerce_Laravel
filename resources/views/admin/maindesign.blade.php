@@ -8,6 +8,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
+    @vite('resources/css/app.css')
+
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="admin/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -64,7 +66,8 @@
                     <div class="list-inline-item logout">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
@@ -98,6 +101,9 @@
                     <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
                         <li><a href="{{ route('admin.addcategory') }}">Add Category</a></li>
                     </ul>
+                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                        <li><a href="{{ route('admin.viewcategory') }}">View Category</a></li>
+                    </ul>
                 </li>
 
                 <li>
@@ -118,12 +124,13 @@
         <div class="page-content">
             <div class="page-header">
                 <div class="container-fluid">
-                    <h2 class="h5 no-margin-bottom">Admin  Dashboard</h2>
+                    <h2 class="h5 no-margin-bottom">Admin Dashboard</h2>
                 </div>
             </div>
             <section class="no-padding-top no-padding-bottom">
                 @yield('dashboard')
                 @yield('add_category')
+                @yield('view_category')
             </section>
 
 
@@ -141,9 +148,9 @@
     </div>
     <!-- JavaScript files-->
     <script src="admin/vendor/jquery/jquery.min.js"></script>
-    <script src="admin/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="admin/vendor/popper.js/umd/popper.min.js"></script>
     <script src="admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="admin/vendor/jquery.cookie/jquery.cookie.js"></script>
     <script src="admin/vendor/chart.js/Chart.min.js"></script>
     <script src="admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="admin/js/charts-home.js"></script>
