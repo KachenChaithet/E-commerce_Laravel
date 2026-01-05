@@ -33,10 +33,8 @@
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
-                        <form action="{{ route('admin.categoryupdate', $category->id) }}" method="POST"
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn  bg-blue-500 text-white">Update</button>
+                        <form action="{{ route('admin.categoryupdate', $category->id) }}" method="GET" @csrf <button
+                            type="submit" class="btn  bg-blue-500 text-white">Update</button>
                         </form>
                     </td>
                 </tr>
