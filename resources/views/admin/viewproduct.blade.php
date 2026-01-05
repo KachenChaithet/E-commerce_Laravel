@@ -24,7 +24,7 @@
 
             <tbody>
                 @foreach ($products as $product)
-                    <tr>
+                    <tr class="">
                         <td>{{ $product->id }}</td>
 
                         <td>
@@ -48,16 +48,18 @@
 
                         <td>{{ $product->product_quantity }}</td>
 
-                        <td class="d-flex gap-2">
-                            <a href="#" class="btn btn-sm bg-blue-500 text-white">Edit</a>
+                        <td class="align-middle">
+                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                <a href="#" class="btn bg-blue-500 text-white">Edit</a>
 
-                            <form method="POST" action="#">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-sm btn-danger">
-                                    Delete
-                                </button>
-                            </form>
+                                <form method="POST" action="#">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
