@@ -1,9 +1,9 @@
 @extends('admin.maindesign')
 
 @section('view_product')
-    @if (session('deletecategory_message'))
+    @if (session('deleteproduct_message'))
         <div class="p-3 mb-2 bg-danger text-white">
-            {{ session('deletecategory_message') }}
+            {{ session('deleteproduct_message') }}
         </div>
     @endif
 
@@ -52,7 +52,7 @@
                             <div class="d-flex justify-content-center align-items-center gap-2">
                                 <a href="#" class="btn bg-blue-500 text-white">Edit</a>
 
-                                <form method="POST" action="#">
+                                <form method="POST" action="{{ route('admin.deleteproduct', $product->id) }}" onsubmit="return confirm('Are you sure you want to delete this product?')">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger">
