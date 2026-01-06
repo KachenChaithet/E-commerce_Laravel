@@ -50,9 +50,11 @@
 
                         <td class="align-middle">
                             <div class="d-flex justify-content-center align-items-center gap-2">
-                                <a href="#" class="btn bg-blue-500 text-white">Edit</a>
+                                <a href="{{ route('admin.updateproduct', $product->id) }}"
+                                    class="btn bg-blue-500 text-white">update</a>
 
-                                <form method="POST" action="{{ route('admin.deleteproduct', $product->id) }}" onsubmit="return confirm('Are you sure you want to delete this product?')">
+                                <form method="POST" action="{{ route('admin.deleteproduct', $product->id) }}"
+                                    onsubmit="return confirm('Are you sure you want to delete this product?')">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger">

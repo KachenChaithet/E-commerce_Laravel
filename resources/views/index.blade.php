@@ -72,25 +72,25 @@
                     </ul>
                     <div class="user_option">
                         @if (Auth::check())
-                             <a href="{{ route('dashboard') }}">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            <span>
-                                Dashboard
-                            </span>
-                        </a>
+                            <a href="{{ route('dashboard') }}">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span>
+                                    Dashboard
+                                </span>
+                            </a>
                         @else
-                        <a href="{{ route('login') }}">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            <span>
-                                Login
-                            </span>
-                        </a>
-                        <a href="{{ route('register') }}">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            <span>
-                                Sign Up
-                            </span>
-                        </a>
+                            <a href="{{ route('login') }}">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span>
+                                    Login
+                                </span>
+                            </a>
+                            <a href="{{ route('register') }}">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span>
+                                    Sign Up
+                                </span>
+                            </a>
                         @endif
                         <a href="">
                             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
@@ -160,207 +160,38 @@
                 </h2>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="front_end/images/p1.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Ring
-                                </h6>
-                                <h6>
-                                    Price
+                @foreach ($products as $product)
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="box">
+                            <a href="">
+                                <div class="img-box">
+                                    <img src="{{ asset('products/' . $product->product_image) }}"
+                                        alt="{{ $product->product_image }}">
+                                </div>
+                                <div class="detail-box">
+                                    <h6>
+                                        {{ $product->product_title }}
+                                    </h6>
+                                    <h6>
+                                        Price
+                                        <span>
+                                            {{ $product->product_price }}
+
+                                        </span>
+                                    </h6>
+                                </div>
+                                <div class="new">
                                     <span>
-                                        $200
+                                        {{ $product->product_category }}
+
                                     </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    New
-                                </span>
-                            </div>
-                        </a>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="front_end/images/p2.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Watch
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                                        $300
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    New
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="front_end/images/p3.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Teddy Bear
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                                        $110
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    New
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="front_end/images/p4.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Flower Bouquet
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                                        $45
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    New
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="front_end/images/p5.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Teddy Bear
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                                        $95
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    New
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="front_end/images/p6.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Flower Bouquet
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                                        $70
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    New
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="front_end/images/p7.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Watch
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                                        $400
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    New
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="front_end/images/p8.png" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6>
-                                    Ring
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                                        $450
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
-                                <span>
-                                    New
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
             <div class="btn-box">
                 <a href="">
                     View All Products
@@ -394,8 +225,8 @@
                         <div class="map-responsive">
                             <iframe
                                 src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=Eiffel+Tower+Paris+France"
-                                width="600" height="300" frameborder="0" style="border:0; width: 100%; height:100%"
-                                allowfullscreen></iframe>
+                                width="600" height="300" frameborder="0"
+                                style="border:0; width: 100%; height:100%" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -523,8 +354,7 @@
 
     <script src="front_end/js/jquery-3.4.1.min.js"></script>
     <script src="front_end/js/bootstrap.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="front_end/js/custom.js"></script>
 
 </body>

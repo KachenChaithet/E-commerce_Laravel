@@ -71,7 +71,7 @@ class AdminController extends Controller
 
         if ($request->hasFile('product_image')) {
             $image = $request->file('product_image');
-            $imagename = time() . '.' . $image->getClientOriginalExtension();
+            $imagename = time() . '.' . $image->extension();
             $image->move(public_path('products'), $imagename);
             $product->product_image = $imagename;
         }
@@ -98,5 +98,41 @@ class AdminController extends Controller
         }
         $product->delete();
         return redirect()->back()->with('deleteproduct_message', 'product deleted successfully');
+    }
+
+
+    public function UpdateProduct($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        return view('admin.updateproduct', compact('product', 'categories'));
+    }
+
+    public function postUpdateProduct(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->product_title = $request->product_title;
+        $product->product_description = $request->product_description;
+        $product->product_quantity = $request->product_quantity;
+        $product->product_price = $request->product_price;
+        $product->product_category = $request->product_category;
+
+        if ($request->hasFile('product_image')) {
+            $oldPath = public_path('products/' . $product->product_image);
+            if (File::exists($oldPath)) {
+                File::delete($oldPath);
+            }
+            $image = $request->file('product_image');
+            $imagename = time() . '.' . $image->extension();
+            $image->move(public_path('products/'), $imagename);
+
+            $product->product_image = $imagename;
+            $product->save();
+            return redirect()->back()->with('updateproduct_message', 'product update successfully');
+
+        }
+
+
+
     }
 }
