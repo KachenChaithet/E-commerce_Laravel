@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -91,7 +93,10 @@ class AdminController extends Controller
     public function deleteProduct($id)
     {
         $product = Product::findOrFail($id);
+        if ($product->product_image && File::exists(public_path('products/' . $product->product_image))) {
+            File::delete(public_path('products/' . $product->product_image));
+        }
         $product->delete();
-        return redirect()->back()->with('deleteproduct_message','product deleted successfully');
+        return redirect()->back()->with('deleteproduct_message', 'product deleted successfully');
     }
 }
