@@ -1,6 +1,14 @@
 @extends('admin.maindesign')
 
 @section('view_product')
+    <form id="searchForm" action="#">
+        <div class="form-group rounded-full bg-white w-[400px] flex justify-between ">
+            <input type="search" name="search" class="border-0 w-full rounded-full" placeholder="What are you searching for...">
+            <button type="submit" class="text-black underline">Search</button>
+        </div>
+    </form>
+
+
     @if (session('deleteproduct_message'))
         <div class="p-3 mb-2 bg-danger text-white">
             {{ session('deleteproduct_message') }}

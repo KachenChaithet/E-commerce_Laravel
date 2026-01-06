@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="admin/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="admin/img/favicon.ico">
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -32,17 +33,7 @@
 <body>
     <header class="header">
         <nav class="navbar navbar-expand-lg">
-            <div class="search-panel">
-                <div class="search-inner d-flex align-items-center justify-content-center">
-                    <div class="close-btn">Close <i class="fa fa-close"></i></div>
-                    <form id="searchForm" action="#">
-                        <div class="form-group">
-                            <input type="search" name="search" placeholder="What are you searching for...">
-                            <button type="submit" class="submit">Search</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+
             <div class="container-fluid d-flex align-items-center justify-content-between">
                 <div class="navbar-header">
                     <!-- Navbar Header--><a href="index.html" class="navbar-brand">
@@ -61,6 +52,17 @@
                             class="nav-link messages-toggle"><i class="icon-email"></i><span
                                 class="badge dashbg-1">5</span></a>
 
+                    </div>
+                    <div class="search-panel">
+                        <div class="search-inner d-flex align-items-center justify-content-center">
+                            <div class="close-btn">Close <i class="fa fa-close"></i></div>
+                            <form id="searchForm" action="#">
+                                <div class="form-group">
+                                    <input type="search" name="search" placeholder="What are you searching for...">
+                                    <button type="submit" class="submit">Search</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <!-- Log out               -->
                     <div class="list-inline-item logout">
