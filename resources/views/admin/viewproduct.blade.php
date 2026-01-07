@@ -1,9 +1,10 @@
 @extends('admin.maindesign')
 
 @section('view_product')
-    <form id="searchForm" action="#">
+    <form id="searchForm" action="{{ route('admin.searchproduct') }}" method="post">
         <div class="form-group rounded-full bg-white w-[400px] flex justify-between ">
-            <input type="search" name="search" class="border-0 w-full rounded-full" placeholder="What are you searching for...">
+            <input type="text" name="search" class="border-0 w-full rounded-l-full"
+                placeholder="What are you searching for...">
             <button type="submit" class="text-black underline">Search</button>
         </div>
     </form>

@@ -86,7 +86,7 @@ class AdminController extends Controller
     public function viewProduct()
     {
 
-        $products = Product::paginate(2);
+        $products = Product::paginate(5);
         return view('admin.viewproduct', compact('products'));
     }
 
@@ -131,8 +131,7 @@ class AdminController extends Controller
             return redirect()->back()->with('updateproduct_message', 'product update successfully');
 
         }
-
-
-
     }
+
+    public function 
 }
