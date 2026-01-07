@@ -37,7 +37,7 @@
                         <button
                             class="w-full bg-pink-500 text-white py-2 rounded-lg text-sm
                                hover:bg-pink-600 transition">
-                            View Details
+                            Add to Cart
                         </button>
                     </div>
                 </a>

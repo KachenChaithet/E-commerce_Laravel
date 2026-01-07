@@ -10,7 +10,8 @@
 
             <!-- Info -->
             <div>
-                <span class="inline-block bg-pink-500 text-white text-xs px-3 py-1 rounded-full mb-4">{{ $product->product_category }}</span>
+                <span
+                    class="inline-block bg-pink-500 text-white text-xs px-3 py-1 rounded-full mb-4">{{ $product->product_category }}</span>
                 <h2 class="text-3xl font-bold mb-4">{{ $product->product_title }}</h2>
                 <p class="text-gray-600 mb-6">
                     {{ $product->product_description }}
@@ -20,9 +21,12 @@
 
                 <div class="flex items-center gap-4 mb-6">
                     <input type="number" value="1" min="1" class="w-20 border rounded px-3 py-2">
-                    <button class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded">
-                        Add To Cart
-                    </button>
+                    <a href="{{ route('add_to_cart', $product->id) }}">
+
+                        <button class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded">
+                            Add To Cart
+                        </button>
+                    </a>
                 </div>
 
                 <ul class="text-sm text-gray-600 space-y-2">
