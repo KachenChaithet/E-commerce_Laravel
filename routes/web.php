@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [UserController::class, 'home'])->name('index');
 Route::get('/product_details/{id}', [UserController::class, 'productDetails'])->name('product_details');
+Route::get('/allproducts', [UserController::class, 'allProducts'])->name('viewallproducts');
 
 
 

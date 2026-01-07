@@ -6,6 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Detail | GIFTOS</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="front_end/images/favicon.png" type="image/x-icon">
+
+    <title>
+        Giftos
+    </title>
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="front_end/css/bootstrap.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="front_end/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="front_end/css/responsive.css" rel="stylesheet" />
 </head>
 
 <body class="bg-gray-50 text-gray-800">
@@ -27,6 +44,7 @@
     </header>
 
     @yield('product_details')
+    @yield('all_products')
     <!-- Footer -->
     <footer class="bg-neutral-800 text-gray-300 mt-16 py-10">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">

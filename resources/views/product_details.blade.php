@@ -10,8 +10,7 @@
 
             <!-- Info -->
             <div>
-                <span class="inline-block bg-pink-500 text-white text-xs px-3 py-1 rounded-full mb-4">Most
-                    Popular</span>
+                <span class="inline-block bg-pink-500 text-white text-xs px-3 py-1 rounded-full mb-4">{{ $product->product_category }}</span>
                 <h2 class="text-3xl font-bold mb-4">{{ $product->product_title }}</h2>
                 <p class="text-gray-600 mb-6">
                     {{ $product->product_description }}

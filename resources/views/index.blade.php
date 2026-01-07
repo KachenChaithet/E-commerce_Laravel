@@ -192,8 +192,8 @@
                 @endforeach
             </div>
 
-            <div class="btn-box">
-                <a href="">
+        <div class="btn-box">
+                <a href="{{ route('viewallproducts') }}">
                     View All Products
                 </a>
             </div>
