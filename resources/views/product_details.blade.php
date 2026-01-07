@@ -1,5 +1,12 @@
 @extends('maindesign')
+<base href="/public">
+
 @section('product_details')
+    @if (session('cart_message'))
+        <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+            {{ session('cart_message') }}
+        </div>
+    @endif
     <!-- Product Detail -->
     <section class="max-w-6xl mx-auto bg-white mt-10 p-10 rounded-xl shadow">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">

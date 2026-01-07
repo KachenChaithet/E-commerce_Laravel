@@ -11,8 +11,6 @@
     <title>
         Giftos
     </title>
-
-    <!-- slider stylesheet -->
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
@@ -25,26 +23,16 @@
     <link href="front_end/css/responsive.css" rel="stylesheet" />
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 min-h-screen  flex flex-col">
 
     <!-- Header -->
-    <header class="bg-sky-400 rounded-b-2xl px-10 py-4">
-        <div class="flex justify-between items-center">
-            <a href="{{ route('index') }}" class="font-bold text-xl">
-                GIFTOS
-            </a>
-            <nav class="flex gap-6 text-sm">
-                <a href="#" class="font-semibold">HOME</a>
-                <a href="#">SHOP</a>
-                <a href="#">WHY US</a>
-                <a href="#">TESTIMONIAL</a>
-                <a href="#">CONTACT US</a>
-            </nav>
-        </div>
-    </header>
 
-    @yield('product_details')
-    @yield('all_products')
+
+    <main class="flex-grow">
+        @yield('product_details')
+        @yield('all_products')
+    </main>
+    
     <!-- Footer -->
     <footer class="bg-neutral-800 text-gray-300 mt-16 py-10">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
@@ -70,7 +58,12 @@
         </div>
         <p class="text-center text-xs mt-10">© 2026 All Rights Reserved By Web Tech Knowledge</p>
     </footer>
+    <!-- JavaScript files-->
 
+    <script src="front_end/js/jquery-3.4.1.min.js"></script>
+    <script src="front_end/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="front_end/js/custom.js"></script>
 </body>
 
 </html>
