@@ -23,4 +23,10 @@ class UserController extends Controller
         $products = Product::all();
         return view('index', compact('products'));
     }
+
+    public function productDetails($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('product_details', compact('product'));
+    }
 }

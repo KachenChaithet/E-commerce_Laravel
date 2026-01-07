@@ -5,7 +5,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [UserController::class,'home'])->name('index');
+Route::get('/', [UserController::class, 'home'])->name('index');
+Route::get('/product_details/{id}', [UserController::class, 'productDetails'])->name('product_details');
 
 
 
@@ -29,7 +30,7 @@ Route::middleware('admin')->group(callback: function () {
     Route::delete('/delete_product/{id}', [AdminController::class, 'deleteProduct'])->name('admin.deleteproduct');
     Route::get('/update_product/{id}', [AdminController::class, 'UpdateProduct'])->name('admin.updateproduct');
     Route::post('/update_product/{id}', [AdminController::class, 'postUpdateProduct'])->name(name: 'admin.postupdateproduct');
-    Route::post('/search', [AdminController::class, 'searchProduct'])->name(name: 'admin.searchproduct');
+    Route::get('/search', [AdminController::class, 'searchProduct'])->name(name: 'admin.searchproduct');
 });
 
 require __DIR__ . '/auth.php';

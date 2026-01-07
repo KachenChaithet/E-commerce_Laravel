@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail | GIFTOS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-sky-400 rounded-b-2xl px-10 py-4">
+        <div class="flex justify-between items-center">
+            <a href="{{ route('index') }}" class="font-bold text-xl">
+                GIFTOS
+            </a>
+            <nav class="flex gap-6 text-sm">
+                <a href="#" class="font-semibold">HOME</a>
+                <a href="#">SHOP</a>
+                <a href="#">WHY US</a>
+                <a href="#">TESTIMONIAL</a>
+                <a href="#">CONTACT US</a>
+            </nav>
+        </div>
+    </header>
+
+    @yield('product_details')
+    <!-- Footer -->
+    <footer class="bg-neutral-800 text-gray-300 mt-16 py-10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+            <div>
+                <h4 class="font-semibold text-white mb-3">ABOUT US</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-3">NEWSLETTER</h4>
+                <input type="email" placeholder="Enter your email" class="w-full px-3 py-2 rounded text-black mb-2">
+                <button class="bg-pink-500 w-full py-2 rounded text-white">Subscribe</button>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-3">NEED HELP</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-3">CONTACT US</h4>
+                <p>Gb road 123 london Uk</p>
+                <p>+01 234567890</p>
+                <p>demo@gmail.com</p>
+            </div>
+        </div>
+        <p class="text-center text-xs mt-10">© 2026 All Rights Reserved By Web Tech Knowledge</p>
+    </footer>
+
+</body>
+
+</html>
