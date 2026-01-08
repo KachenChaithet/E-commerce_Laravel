@@ -92,8 +92,8 @@
                                 </span>
                             </a>
                         @endif
-                        <a href="">
-                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                        <a href="{{ route('cartproducts') }}">
+                            <i class="fa fa-shopping-bag" aria-hidden="true">[{{ $count }}]</i>
                         </a>
                         <form class="form-inline ">
                             <button class="btn nav_search-btn" type="submit">
@@ -192,7 +192,7 @@
                 @endforeach
             </div>
 
-        <div class="btn-box">
+            <div class="btn-box">
                 <a href="{{ route('viewallproducts') }}">
                     View All Products
                 </a>

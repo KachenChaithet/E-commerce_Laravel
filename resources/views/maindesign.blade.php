@@ -31,8 +31,9 @@
     <main class="flex-grow">
         @yield('product_details')
         @yield('all_products')
+        @yield('viewcart_products')
     </main>
-    
+
     <!-- Footer -->
     <footer class="bg-neutral-800 text-gray-300 mt-16 py-10">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
