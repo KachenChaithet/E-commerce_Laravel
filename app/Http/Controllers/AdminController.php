@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use File;
 use Illuminate\Http\Request;
@@ -141,5 +142,11 @@ class AdminController extends Controller
             ->paginate(5);
 
         return view('admin.viewproduct', compact('products'));
+    }
+
+    public function viewOrder()
+    {
+        $orders = Order::with(['items.product'])->paginate(10);
+        return view('admin.vieworders', compact('orders'));
     }
 }

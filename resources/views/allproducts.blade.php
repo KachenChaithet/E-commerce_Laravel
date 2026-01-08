@@ -2,7 +2,9 @@
 
 @section('all_products')
     <div class="container mx-auto px-4 py-10">
-
+        <a href="{{ route('index') }}" class=" inline-block cursor-pointer hover:text-black text-gray-600">
+            &larr; Go back
+        </a>
         <h2 class="text-3xl font-bold text-center mb-10">
             All Products
         </h2>
