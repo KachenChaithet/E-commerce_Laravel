@@ -11,6 +11,7 @@ Route::get('/allproducts', [UserController::class, 'allProducts'])->name('viewal
 Route::get('/addtocart/{id}', [UserController::class, 'addToCart'])->middleware(['auth', 'verified'])->name('add_to_cart');
 Route::get('/cartproducts', [UserController::class, 'cartProducts'])->middleware(['auth', 'verified'])->name('cartproducts');
 
+Route::get('/removecartproducts/{id}', [UserController::class, 'removeCartProducts'])->middleware(['auth', 'verified'])->name('removecartproducts');
 
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
