@@ -14,6 +14,7 @@ Route::get('/cartproducts', [UserController::class, 'cartProducts'])->middleware
 Route::get('/removecartproducts/{id}', [UserController::class, 'removeCartProducts'])->middleware(['auth', 'verified'])->name('removecartproducts');
 Route::post('/confirm_order', [UserController::class, 'confirmOrder'])->middleware(['auth', 'verified'])->name('confirm_order');
 
+Route::get('/myorders', [UserController::class, 'myOrders'])->middleware(['auth', 'verified'])->name('myorders');
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

@@ -14,7 +14,7 @@ class Order extends Model
         'user_id',
         'product_id',
     ];
-
+    public const STATUSES = ['pending', 'paid', 'shipped', 'completed', 'cancelled'];
 
     public function items()
     {

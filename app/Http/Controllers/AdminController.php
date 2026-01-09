@@ -147,6 +147,7 @@ class AdminController extends Controller
     public function viewOrder()
     {
         $orders = Order::with(['items.product'])->paginate(10);
-        return view('admin.vieworders', compact('orders'));
+        $status = Order::STATUSES;
+        return view('admin.vieworders', compact('orders', 'status'));
     }
 }
