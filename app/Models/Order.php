@@ -21,4 +21,8 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+    public function user()
+    {
+        return $this->hasOne('App\Models\user','id','user_id');
+    }
 }
