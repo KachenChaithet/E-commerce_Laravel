@@ -165,6 +165,7 @@
     <script src="admin/vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="admin/js/charts-home.js"></script>
     <script src="admin/js/front.js"></script>
+    @yield('scriptsvieworders')
 </body>
 
 </html>

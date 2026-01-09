@@ -13,6 +13,7 @@ class Order extends Model
         'receiver_phone',
         'user_id',
         'product_id',
+        'status'
     ];
     public const STATUSES = ['pending', 'paid', 'shipped', 'completed', 'cancelled'];
 

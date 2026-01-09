@@ -124,6 +124,19 @@ class UserController extends Controller
     public function myOrders()
     {
         $orders = Order::where('user_id', Auth::id())->get();
-        return view('viewmyorders',compact('orders'));
+        return view('viewmyorders', compact('orders'));
     }
+
+    public function updateStatus(Request $request, Order $order)
+    {
+        $order->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Status updated successfully'
+        ]);
+    }
+
 }

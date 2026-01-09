@@ -17,6 +17,7 @@
                         <th class="px-4 py-3 text-left text-sm font-semibold">Created At</th>
                         <th class="px-4 py-3 text-left text-sm font-semibold">Image</th>
                         <th class="px-4 py-3 text-center text-sm font-semibold">Actions</th>
+                        <th class="px-4 py-3 text-center text-sm font-semibold">PDF</th>
                     </tr>
                 </thead>
 
@@ -36,24 +37,21 @@
                                     'cancelled' => 'border-red-500 text-red-600',
                                 ];
                             @endphp
-
                             <td class="px-4 py-3">
-                                <form action="" method="POST">
 
-                                    <select
-                                        class="
+                                <select data-id="{{ $order->id }}"
+                                    class="
+                                    order-status
                                     px-2 py-1 rounded text-xs font-semibold border {{ $statusClasses[$order->status] ?? '' }}
                                     appearance-none
                                     focus:outline-none focus:ring-1 focus:ring-blue-500
                                     ">
-                                        @foreach ($status as $s)
-                                            <option value="{{ $s }}"
-                                                {{ $order->status === $s ? 'selected' : '' }}>
-                                                {{ ucfirst($s) }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </form>
+                                    @foreach ($status as $s)
+                                        <option value="{{ $s }}" {{ $order->status === $s ? 'selected' : '' }}>
+                                            {{ ucfirst($s) }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </td>
 
                             <td class="px-4 py-3">
@@ -82,6 +80,10 @@
                             <td class="px-4 py-3 text-center">
                                 action
                             </td>
+                            <td class="px-4 py-3 text-center">
+                                <a class="btn btn-primary font-semibold text-white"
+                                    href="{{ route('admin.dowloadpdf',$order->id) }}">Dowload PDF</a>
+                            </td>
                         </tr>
                     @empty
                         <tr>
@@ -95,4 +97,31 @@
             {{ $orders->links() }}
         </div>
     </div>
+@endsection
+@section('scriptsvieworders')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.order-status').forEach(select => {
+                select.addEventListener('change', function() {
+
+                    fetch(`/orders/${this.dataset.id}/status`, {
+                            method: 'PUT',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                status: this.value
+                            })
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert(data.message);
+                            }
+                        });
+                });
+            });
+        });
+    </script>
 @endsection

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use File;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -149,5 +149,12 @@ class AdminController extends Controller
         $orders = Order::with(['items.product'])->paginate(10);
         $status = Order::STATUSES;
         return view('admin.vieworders', compact('orders', 'status'));
+    }
+
+    public function downloadPDF($id)
+    {
+        $data = Order::findOrFail($id);
+        $pdf = Pdf::loadView('admin.invoice', $data);
+        return $pdf->download('invoice.pdf');
     }
 }

@@ -10,6 +10,7 @@ Route::get('/product_details/{id}', [UserController::class, 'productDetails'])->
 Route::get('/allproducts', [UserController::class, 'allProducts'])->name('viewallproducts');
 Route::get('/addtocart/{id}', [UserController::class, 'addToCart'])->middleware(['auth', 'verified'])->name('add_to_cart');
 Route::get('/cartproducts', [UserController::class, 'cartProducts'])->middleware(['auth', 'verified'])->name('cartproducts');
+Route::put('/orders/{order}/status', [UserController::class, 'updateStatus'])->middleware(['auth', 'verified'])->name('updatestatus');
 
 Route::get('/removecartproducts/{id}', [UserController::class, 'removeCartProducts'])->middleware(['auth', 'verified'])->name('removecartproducts');
 Route::post('/confirm_order', [UserController::class, 'confirmOrder'])->middleware(['auth', 'verified'])->name('confirm_order');
@@ -37,7 +38,8 @@ Route::middleware('admin')->group(callback: function () {
     Route::get('/update_product/{id}', [AdminController::class, 'UpdateProduct'])->name('admin.updateproduct');
     Route::post('/update_product/{id}', [AdminController::class, 'postUpdateProduct'])->name(name: 'admin.postupdateproduct');
     Route::get('/search', [AdminController::class, 'searchProduct'])->name(name: 'admin.searchproduct');
-    Route::get('/view_order', [AdminController::class,   'viewOrder'])->name('admin.vieworder');
+    Route::get('/view_order', [AdminController::class, 'viewOrder'])->name('admin.vieworder');
+    Route::get('/dowloadpdf/{id}', [AdminController::class, 'downloadPDF'])->name('admin.dowloadpdf');
 });
 
 require __DIR__ . '/auth.php';
