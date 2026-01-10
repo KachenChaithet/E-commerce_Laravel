@@ -11,20 +11,23 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
             @foreach ($products as $product)
-                <a href="{{ route('product_details', $product->id) }}"
-                    class="group bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
+                <div class="group bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden">
 
-                    {{-- Image --}}
-                    <div class="bg-gray-100 flex items-center justify-center h-56">
-                        <img src="{{ asset('products/' . $product->product_image) }}" alt="{{ $product->product_title }}"
-                            class="max-h-44 object-contain group-hover:scale-105 transition">
-                    </div>
+                    {{-- Image (click ไป detail) --}}
+                    <a href="{{ route('product_details', $product->id) }}">
+                        <div class="bg-gray-100 flex items-center justify-center h-56">
+                            <img src="{{ asset('products/' . $product->product_image) }}" alt="{{ $product->product_title }}"
+                                class="max-h-44 object-contain group-hover:scale-105 transition">
+                        </div>
+                    </a>
 
                     {{-- Content --}}
                     <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-2 truncate">
-                            {{ $product->product_title }}
-                        </h3>
+                        <a href="{{ route('product_details', $product->id) }}">
+                            <h3 class="font-semibold text-lg mb-2 truncate hover:underline">
+                                {{ $product->product_title }}
+                            </h3>
+                        </a>
 
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-pink-500 font-bold text-lg">
@@ -36,13 +39,27 @@
                             </span>
                         </div>
 
-                        <button
-                            class="w-full bg-pink-500 text-white py-2 rounded-lg text-sm
-                               hover:bg-pink-600 transition">
-                            Add to Cart
-                        </button>
+                        {{-- Add to cart --}}
+                        <form method="GET" action="{{ route('product_details', $product->id) }}">
+                            @csrf
+                            <button
+                                class="w-full bg-pink-500 text-white py-2 rounded-lg text-sm
+                       hover:bg-pink-600 transition mb-2">
+                                Add to Cart
+                            </button>
+                        </form>
+
+                        {{-- Pay now --}}
+                        <form method="POST" action="">
+                            @csrf
+                            <button
+                                class="w-full bg-pink-600 text-white py-2 rounded-lg text-sm
+                       hover:bg-pink-700 transition">
+                                Pay now
+                            </button>
+                        </form>
                     </div>
-                </a>
+                </div>
             @endforeach
         </div>
 

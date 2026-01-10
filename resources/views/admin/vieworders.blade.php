@@ -85,6 +85,7 @@
                                     href="{{ route('admin.dowloadpdf',$order->id) }}">Dowload PDF</a>
                             </td>
                         </tr>
+                        
                     @empty
                         <tr>
                             <td colspan="7" class="text-center py-6 text-gray-500">
