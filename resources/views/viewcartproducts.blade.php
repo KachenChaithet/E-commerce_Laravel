@@ -65,17 +65,27 @@
 
             <div class="bg-gray-200 p-4 space-y-4 rounded-md shadow">
                 <h1 class="text-2xl font-bold">Shipping Information</h1>
-                <form action="{{ route('confirm_order') }}" onsubmit="return confirm('confirm order right?')" method="POST"
-                    class="flex flex-col gap-4">
-                    @csrf
-                    <input type="text" name="receiver_address" class="py-2 pl-2 rounded-md focus:outline-none"
-                        placeholder="Enter Your Address" required>
-                    <input type="text" name="receiver_phone" class="py-2 pl-2 rounded-md focus:outline-none"
-                        placeholder="Enter Your Phone Number" required>
-                    <button class="bg-pink-500 w-fit text-white px-2 py-2 rounded-lg font-semibold hover:bg-pink-400"
-                        type="submit">Confirm
-                        Order</button>
-                </form>
+                <div class="">
+                    <form action="{{ route('confirm_order') }}" onsubmit="return confirm('confirm order right?')"
+                        method="POST" class="flex flex-col gap-4">
+                        @csrf
+                        <input type="text" name="receiver_address" class="py-2 pl-2 rounded-md focus:outline-none"
+                            placeholder="Enter Your Address" required>
+                        <input type="text" name="receiver_phone" class="py-2 pl-2 rounded-md focus:outline-none"
+                            placeholder="Enter Your Phone Number" required>
+                        <div class="flex gap-4">
+                            <button
+                                class="bg-pink-500 w-fit text-white px-2 py-2 rounded-lg font-semibold hover:bg-pink-400"
+                                type="submit">Confirm
+                                Order</button>
+                            <button
+                                class=" bg-pink-500 w-fit text-white px-2 py-2 rounded-lg font-semibold hover:bg-pink-400"
+                                type="submit" formaction="{{ route('stripe') }}">
+                                Pay now
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         @endif
     </div>

@@ -15,6 +15,14 @@ Route::put('/orders/{order}/status', [UserController::class, 'updateStatus'])->m
 Route::get('/removecartproducts/{id}', [UserController::class, 'removeCartProducts'])->middleware(['auth', 'verified'])->name('removecartproducts');
 Route::post('/confirm_order', [UserController::class, 'confirmOrder'])->middleware(['auth', 'verified'])->name('confirm_order');
 
+Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function () {
+
+    Route::get('stripe', 'stripe')->name('stripe');
+
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+
+});
+
 Route::get('/myorders', [UserController::class, 'myOrders'])->middleware(['auth', 'verified'])->name('myorders');
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

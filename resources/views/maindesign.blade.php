@@ -21,6 +21,10 @@
     <link href="front_end/css/style.css" rel="stylesheet" />
     <!-- responsive style -->
     <link href="front_end/css/responsive.css" rel="stylesheet" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body class="bg-gray-50 text-gray-800 min-h-screen  flex flex-col">
@@ -32,6 +36,7 @@
         @yield('product_details')
         @yield('all_products')
         @yield('viewcart_products')
+        @yield('stripe_view')
     </main>
 
     <!-- Footer -->
@@ -65,6 +70,137 @@
     <script src="front_end/js/bootstrap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="front_end/js/custom.js"></script>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+
+
+    <script type="text/javascript">
+        $(function() {
+
+
+
+
+
+
+            $('form.require-validation').on('submit', function(e) {
+                e.preventDefault();
+
+                var $form = $(this);
+
+
+                inputSelector = ['input[type=email]', 'input[type=password]',
+
+                        'input[type=text]', 'input[type=file]',
+
+                        'textarea'
+                    ].join(', '),
+
+                    $inputs = $form.find('.required').find(inputSelector),
+
+                    $errorMessage = $form.find('div.error'),
+
+                    valid = true;
+
+                $errorMessage.addClass('hide');
+
+
+
+                $('.has-error').removeClass('has-error');
+
+                $inputs.each(function(i, el) {
+
+                    var $input = $(el);
+
+                    if ($input.val() === '') {
+
+                        $input.parent().addClass('has-error');
+
+                        $errorMessage.removeClass('hide');
+
+                        e.preventDefault();
+
+                    }
+
+                });
+
+
+
+                if (!$form.data('cc-on-file')) {
+
+                    e.preventDefault();
+
+                    Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+
+                    Stripe.card.createToken({
+                        number: $form.find('.card-number').val(),
+                        cvc: $form.find('.card-cvc').val(),
+                        exp_month: $form.find('.card-expiry-month').val(),
+                        exp_year: $form.find('.card-expiry-year').val()
+                    }, stripeResponseHandler);
+
+                }
+
+
+
+            });
+
+
+
+            /*------------------------------------------
+
+            --------------------------------------------
+
+            Stripe Response Handler
+
+            --------------------------------------------
+
+            --------------------------------------------*/
+
+            function stripeResponseHandler(status, response) {
+
+                if (response.error) {
+
+                    $('.error')
+
+                        .removeClass('hide')
+
+                        .find('.alert')
+
+                        .text(response.error.message);
+
+                } else {
+
+                    /* token contains id, last4, and card type */
+
+                    var token = response['id'];
+
+
+
+                    $form.find('input[type=text]').empty();
+
+                    Stripe.card.createToken({
+                        ...
+                    }, function(status, response) {
+                        if (response.error) {
+                            alert(response.error.message);
+                        } else {
+                            $form.append(
+                                "<input type='hidden' name='stripeToken' value='" + response.id + "'/>"
+                            );
+                            $form.get(0).submit();
+                        }
+                    });
+
+
+                }
+
+            }
+
+
+
+        });
+    </script>
 </body>
 
 </html>

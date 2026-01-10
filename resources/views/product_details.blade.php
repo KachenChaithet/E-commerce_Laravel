@@ -31,14 +31,20 @@
                     <div class="text-2xl font-semibold text-pink-500 mb-6">${{ $product->product_price }}</div>
 
                     <div class="flex items-center gap-4 mb-6">
-                        <input type="number" value="1" min="1" class="w-20 border rounded px-3 py-2">
-                        <a href="{{ route('add_to_cart', $product->id) }}">
+                        <input type="number" value="1" min="1"
+                            class="w-20 h-10 border rounded px-3 text-center">
 
-                            <button class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded">
-                                Add To Cart
-                            </button>
+                        <a href="{{ route('add_to_cart', $product->id) }}"
+                            class=" btn bg-pink-500 hover:bg-pink-600 text-white px-6 rounded">
+                            Add To Cart
+                        </a>
+                        <a href="{{ route('stripe') }}" class="btn bg-pink-600 hover:bg-pink-700 text-white px-6 rounded">
+                            Pay now
                         </a>
                     </div>
+
+                  
+
 
                     <ul class="text-sm text-gray-600 space-y-2">
                         <li><strong>Category:</strong> {{ $product->product_category }}</li>

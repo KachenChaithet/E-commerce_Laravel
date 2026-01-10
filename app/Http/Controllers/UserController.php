@@ -9,6 +9,9 @@ use App\Models\ProductCart;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+// stripe
+use Session;
+use Stripe;
 
 
 class UserController extends Controller
@@ -137,6 +140,37 @@ class UserController extends Controller
             'success' => true,
             'message' => 'Status updated successfully'
         ]);
+    }
+
+    public function stripe()
+    {
+
+        return view('stripe');
+
+    }
+
+    public function stripePost(Request $request)
+    {
+
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+
+
+        Stripe\Charge::create([
+
+            "amount" => 100 * 100,
+
+            "currency" => "usd",
+
+            "source" => $request->stripeToken,
+
+            "description" => "Test payment from itsolutionstuff.com."
+
+        ]);
+
+
+        return redirect()->back()->with('success', 'Payment successful!');
+
     }
 
 }

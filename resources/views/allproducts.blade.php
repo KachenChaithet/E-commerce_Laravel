@@ -50,7 +50,7 @@
                         </form>
 
                         {{-- Pay now --}}
-                        <form method="POST" action="">
+                        <form method="GET" action="{{ route('stripe') }}">
                             @csrf
                             <button
                                 class="w-full bg-pink-600 text-white py-2 rounded-lg text-sm
